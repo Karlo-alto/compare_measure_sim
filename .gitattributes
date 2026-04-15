@@ -1,0 +1,92 @@
+* text=auto
+*.chm binary
+*.cur binary
+*.dll binary
+*.doc binary
+*.docx binary
+*.exe binary
+*.gif binary
+*.ico binary
+*.jpg binary
+*.mov binary
+*.mp3 binary
+*.mp4 binary
+*.pdf binary
+*.png binary
+*.wav binary
+*.asm diff
+*.bat diff
+*.blk diff
+*.c diff text eol=lf
+*.cc diff text eol=lf
+*.cfg diff
+*.chi diff text eol=lf
+*.cmake diff text eol=lf
+*.config diff
+*.cpp diff text eol=lf
+*.cs diff text eol=crlf
+*.csproj diff text eol=crlf
+*.csv diff
+*.cxx diff text eol=lf
+*.cyg diff
+*.def diff text eol=lf
+*.dvx diff
+*.eng diff text eol=lf
+*.f diff text eol=lf
+*.fre diff text eol=lf
+*.ger diff text eol=lf
+*.gxx diff text eol=lf
+*.h diff text eol=lf
+*.hh diff text eol=lf
+*.hpp diff text eol=lf
+*.htm diff
+*.html diff
+*.hxx diff text eol=lf
+*.idl diff
+*.inc diff text eol=lf
+*.in diff text eol=lf
+*.ini diff
+*.inl diff text eol=lf
+*.inline diff text eol=lf
+*.ita diff text eol=lf
+*.js diff
+*.json diff text eol=lf
+*.lic diff
+*.lnx diff
+*.lst diff
+*.lxx diff text eol=lf
+*.manifest diff
+*.md diff
+*.msc diff
+*.pas diff
+*.patch text eol=lf
+*.por diff text eol=lf
+*.props diff
+*.ps1 diff text eol=crlf
+*.py diff
+*.rc diff text eol=crlf
+*.rep diff
+*.resx diff
+*.rgb diff
+*.rgba diff
+*.ril diff
+*.runsettings diff
+*.ruleset diff
+*.sh diff text eol=lf
+*.sln diff text eol=crlf
+*.spa diff text eol=lf
+*.svg diff
+*.ts diff
+*.txt diff text eol=lf
+*.unx diff text eol=lf
+*.vcxproj diff text eol=crlf
+*.vcxproj.filters diff text eol=crlf
+*.vms diff text eol=lf
+*.wnt diff
+*.xaml diff text eol=crlf
+*.xml diff
+*.xsd diff
+*.yml diff
+*.zeh diff
+manifest diff
+makefile diff text eol=lf

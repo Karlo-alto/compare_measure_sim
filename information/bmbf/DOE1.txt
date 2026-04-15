@@ -1,0 +1,126 @@
+BMBF
+
+
+6 Variablen:
+
+no     id  index      value step_value  name_unit
+Nr Kenner  Index       Wert Stufenwert  Bezeichnung [Einheit]
+ 1   5460      3         85         10  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         85         10  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         85         10  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         85         10  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        800        200  Nachdruck 1 - Druck [bar]
+ 6   5288      1   14.49868        4.5  Füllung 1 - Volumenstrom [cm³/s]
+
+
+9 Tests ("-" = Wert - Variation, "0" = Wert, "+" = Wert + Variation):
+
+Nr
+ 1 - - - - - -
+ 2 - - - - - +
+ 3 - - - - + +
+ 4 - - + + + -
+ 5 - - + + + +
+ 6 0 0 0 0 0 0
+ 7 0 0 0 0 0 +
+ 8 + + - - + +
+ 9 + + + + - -
+
+
+Test 1:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         75  -  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         75  -  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         75  -  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         75  -  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        400  -  Nachdruck 1 - Druck [bar]
+ 6   5288      1   5.498677  -  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 2:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         75  -  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         75  -  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         75  -  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         75  -  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        400  -  Nachdruck 1 - Druck [bar]
+ 6   5288      1   23.49868  +  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 3:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         75  -  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         75  -  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         75  -  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         75  -  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1       1200  +  Nachdruck 1 - Druck [bar]
+ 6   5288      1   23.49868  +  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 4:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         75  -  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         75  -  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         95  +  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         95  +  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1       1200  +  Nachdruck 1 - Druck [bar]
+ 6   5288      1   5.498677  -  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 5:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         75  -  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         75  -  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         95  +  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         95  +  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1       1200  +  Nachdruck 1 - Druck [bar]
+ 6   5288      1   23.49868  +  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 6:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         85  0  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         85  0  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         85  0  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         85  0  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        800  0  Nachdruck 1 - Druck [bar]
+ 6   5288      1   14.49868  0  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 7:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         85  0  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         85  0  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         85  0  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         85  0  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        800  0  Nachdruck 1 - Druck [bar]
+ 6   5288      1   23.49868  +  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 8:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         95  +  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         95  +  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         75  -  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         75  -  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1       1200  +  Nachdruck 1 - Druck [bar]
+ 6   5288      1   23.49868  +  Füllung 1 - Volumenstrom [cm³/s]
+
+
+Test 9:
+
+Nr Kenner Nummer       Wert  V  Bezeichnung [Einheit]
+ 1   5460      3         95  +  Vorlauftemperatur Temperierkreislauf 3 Zeit 1 [°C]
+ 2   5460      4         95  +  Vorlauftemperatur Temperierkreislauf 4 Zeit 1 [°C]
+ 3   5460      1         95  +  Vorlauftemperatur Temperierkreislauf 1 Zeit 1 [°C]
+ 4   5460      2         95  +  Vorlauftemperatur Temperierkreislauf 2 Zeit 1 [°C]
+ 5   5291      1        400  -  Nachdruck 1 - Druck [bar]
+ 6   5288      1   5.498677  -  Füllung 1 - Volumenstrom [cm³/s]

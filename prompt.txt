@@ -1,0 +1,45 @@
+Information:
+I need a python-script. It should ask for 3 things:
+ 1. a path to an executable cmsolver.exe. Called exepath.
+ 2. a path to search for files *.rm1 given to the executable. Called rm1_root
+ 3. additional commandline options. Called Commandstring.
+ 
+The script shall search recusivley for files which ends with .rm1.
+And make list which contains the full path to these files.
+Then start the executable cmsolver.exe on exepath for all entries in the list of 
+*.rm1 files. Start not more then 4 executables at the same time.
+Start it with the the commandline option
+   "-rm1 name_from_list -sim 15" + Commandstring.
+
+You can find such a script in src. 
+
+But I it should do more.
+
+The programm produces result files called  *_DOE2_???.txt. 
+In the files *_DOE2_???.txt are simulated values stored.
+Examples are in information/4095 and  information/bmbf
+We need the one with the id (numbers) you can find in information/dim.cpp.
+From such files read the index, the current_value and the set_value and 
+put into arrays named sim_current and sim_set.
+
+There will be for every DOE2-file another file named *_meas_???.txt. It should contain for every read index the
+following:
+index  current_value set_value
+
+Very likely the order is the same in DOE2 and meas file. 
+Read it to meas_current and meas_set.
+
+Now calculate for all matching indices
+
+double nenner = 0.03 * Abs(meas_current) + Abs(meas_current - meas_set) + 0.02;
+double ProzAbweichung = 100 * (meas_current - sim_current - meas_set + sim_set) / nenner;
+
+Store this and the addition (sum) of all in a text file named *_result_???.txt.
+Then collect all the sums in one text file named result.txt.
+
+
+
+
+
+
+

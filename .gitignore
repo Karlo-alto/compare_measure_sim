@@ -1,0 +1,58 @@
+# Generated files
+src/auth/finger.key.auto.inc
+
+# Build directories
+build/
+out/
+install/
+packages/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeUserPresets.json
+
+# IDE files
+.vs/
+.vscode/
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+*.db
+
+# Compiled binaries
+*.lib
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.o
+*.a
+*.so
+*.dylib
+
+# Python wheel output
+dist/
+
+# Dependency directories
+vcpkg_installed/
+node_modules/
+
+.eslintcache
+.release-notes.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Extracted test data (regenerated from zip)
+tests/data/.cache/
+
+# Coverage reports
+coverage/
+
+.claude/settings.local.json
+nul

@@ -1,0 +1,1 @@
+double nenner = 0.03 * Math.Abs(MeasureIst) + Math.Abs(MessungSoll) + 0.02;
