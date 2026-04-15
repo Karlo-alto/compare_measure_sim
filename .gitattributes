@@ -63,7 +63,7 @@
 *.por diff text eol=lf
 *.props diff
 *.ps1 diff text eol=crlf
-*.py diff
+*.py diff  eol=lf
 *.rc diff text eol=crlf
 *.rep diff
 *.resx diff
