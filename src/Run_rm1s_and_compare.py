@@ -218,6 +218,8 @@ def compare_pair(doe2_path: Path) -> tuple[Path, float] | None:
             f"sim_cur={sc:>15.8g}  sim_set={ss:>15.8g}  "
             f"ProzAbweichung={proz:>15.8g}"
         )
+    if range(n) > 0:
+        total /= range(n)
 
     with result_path.open("w", encoding="utf-8") as fh:
         fh.write(f"# source DOE2: {doe2_path.name}\n")
