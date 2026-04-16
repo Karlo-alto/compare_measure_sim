@@ -210,7 +210,7 @@ def compare_pair(doe2_path: Path) -> tuple[Path, float] | None:
 
         nenner = 0.03 * abs(mc) + abs(mc - ms) + 0.02
         proz = 100.0 * (mc - sc - ms + ss) / nenner
-        total += proz
+        total += abs(proz)
 
         rows.append(
             f"{meas_idx[i]:>6d}  "
@@ -252,7 +252,7 @@ def analyse_results(rm1_root: Path) -> None:
             summary.append((result_path, total))
             print(f"  wrote {result_path.name}  SUM = {total:.8g}")
 
-    collected = rm1_root / "result.txt"
+    collected = rm1_root / "result_all.txt"
     with collected.open("w", encoding="utf-8") as fh:
         fh.write("# result_file\tsum_ProzAbweichung\n")
         for result_path, total in summary:
