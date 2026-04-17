@@ -1,4 +1,6 @@
 Information:
+Please make first a plan.
+
 I need a python-script. It should ask for 3 things:
  1. a path to an executable cmsolver.exe. Called exepath.
  2. a path to search for files *.rm1 given to the executable. Called rm1_root
@@ -15,7 +17,7 @@ You can find such a script in src.
 
 But I it should do more.
 
-The programm produces result files called  *_DOE2_???.txt. 
+The program produces result files called  *_DOE2_???.txt. 
 In the files *_DOE2_???.txt are simulated values stored.
 Examples are in information/4095 and  information/bmbf
 We need the one with the id (numbers) you can find in information/dim.cpp.

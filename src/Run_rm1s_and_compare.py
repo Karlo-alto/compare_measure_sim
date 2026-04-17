@@ -156,6 +156,63 @@ def parse_meas_file(path: Path) -> tuple[list[int], list[float], list[float]]:
     return indices, meas_current, meas_set
 
 
+def parse_messung_csv(path: Path, indices: list[int]) -> tuple[list[int], list[float], list[float]]:
+    """Read a Messung.csv and return (indices, meas_current, meas_set).
+
+    Messung.csv layout (semicolon-separated):
+        Line 1: headers like  "Messstelle 1 - IST; ... ; Messstelle 1 - SOLL; ..."
+        Line 2: values like   "74.5; 84.; 13.1; ...; 75.; 84.51; 13.3; ..."
+    First N values are current (IST), next N are set (SOLL).
+    The indices are taken from the DOE2 file (positional pairing).
+    """
+    with path.open("r", encoding="utf-8", errors="replace") as fh:
+        lines = [l.strip() for l in fh if l.strip()]
+
+    if len(lines) < 2:
+        print(f"  [warn] {path}: too few lines in Messung.csv")
+        return [], [], []
+
+    values = [v.strip() for v in lines[1].split(";") if v.strip()]
+    if len(values) % 2 != 0:
+        print(
+            f"  [warn] {path}: odd number of values ({len(values)}), "
+            f"expected even (N current + N set)"
+        )
+        return [], [], []
+
+    n = len(values) // 2
+    try:
+        meas_current = [float(v) for v in values[:n]]
+        meas_set = [float(v) for v in values[n:]]
+    except ValueError as exc:
+        print(f"  [warn] {path}: unparseable value: {exc}")
+        return [], [], []
+
+    if len(indices) != n:
+        m = min(len(indices), n)
+        print(
+            f"  [warn] {path}: {n} measurements but DOE2 has {len(indices)} "
+            f"dimension rows — using first {m}"
+        )
+        return indices[:m], meas_current[:m], meas_set[:m]
+
+    return indices, meas_current, meas_set
+
+
+def find_messung_csv(doe2_path: Path) -> Path | None:
+    """Walk up from the DOE2 file's directory looking for Messung.csv."""
+    d = doe2_path.parent
+    for _ in range(5):  # don't walk up more than 5 levels
+        candidate = d / "Messung.csv"
+        if candidate.is_file():
+            return candidate
+        parent = d.parent
+        if parent == d:
+            break
+        d = parent
+    return None
+
+
 def meas_path_for(doe2_path: Path) -> Path:
     """Derive the sibling meas filename: <stem>_DOE2_<NNN>.txt -> <stem>_meas_<NNN>.txt"""
     new_name = re.sub(r"_DOE2_", "_meas_", doe2_path.name, count=1)
@@ -171,15 +228,29 @@ def result_path_for(doe2_path: Path) -> Path:
 def compare_pair(doe2_path: Path) -> tuple[Path, float] | None:
     """Compare a DOE2 file against its meas sibling. Write <stem>_result_<NNN>.txt.
 
+    Tries *_meas_*.txt first; if not found, falls back to Messung.csv
+    in the parent directories.
+
     Returns (result_path, sum_of_ProzAbweichung) on success, None if skipped.
     """
-    meas_path = meas_path_for(doe2_path)
-    if not meas_path.is_file():
-        print(f"  [skip] no meas file for {doe2_path.name} (expected {meas_path.name})")
-        return None
-
     sim_idx, sim_cur, sim_set_arr = parse_doe2_file(doe2_path)
-    meas_idx, meas_cur, meas_set_arr = parse_meas_file(meas_path)
+
+    meas_source: str = ""
+    meas_path = meas_path_for(doe2_path)
+    if meas_path.is_file():
+        meas_idx, meas_cur, meas_set_arr = parse_meas_file(meas_path)
+        meas_source = meas_path.name
+    else:
+        csv_path = find_messung_csv(doe2_path)
+        if csv_path is not None:
+            meas_idx, meas_cur, meas_set_arr = parse_messung_csv(csv_path, sim_idx)
+            meas_source = str(csv_path)
+        else:
+            print(
+                f"  [skip] no meas file for {doe2_path.name} "
+                f"(no {meas_path.name} and no Messung.csv found)"
+            )
+            return None
 
     n = min(len(sim_idx), len(meas_idx))
     if n == 0:
@@ -218,11 +289,11 @@ def compare_pair(doe2_path: Path) -> tuple[Path, float] | None:
             f"sim_cur={sc:>15.8g}  sim_set={ss:>15.8g}  "
             f"ProzAbweichung={proz:>15.8g}"
         )
-    total /= range(n)
+    total /= n
 
     with result_path.open("w", encoding="utf-8") as fh:
         fh.write(f"# source DOE2: {doe2_path.name}\n")
-        fh.write(f"# source meas: {meas_path.name}\n")
+        fh.write(f"# source meas: {meas_source}\n")
         fh.write(f"# rows compared: {n}\n")
         fh.write(
             "# columns: index  meas_current  meas_set  sim_current  sim_set  ProzAbweichung\n"
