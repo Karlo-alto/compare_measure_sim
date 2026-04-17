@@ -1,0 +1,15 @@
+Summary
+Starting from an existing src/Run_rm1s.py (which prompted for inputs and ran cmsolver.exe in parallel), I extended it into src/Run_rm1s_and_compare.py with a post-processing analysis phase:
+
+Solver runner (existing) — prompts for exepath, rm1_root, Commandstring; finds *.rm1 files recursively; runs cmsolver.exe -rm1 <file> -sim 15 <Commandstring> with up to 4 processes in parallel.
+DOE2 parsing — after solver runs complete, finds all *_DOE2_*.txt files. Filters rows by DIM IDs extracted from information/dim.cpp (dimension types like distance, angle, flatness, coordinates, etc.).
+Measurement data — for each DOE2 file, looks for measurement data in two formats:
+First tries *_meas_*.txt (tab-separated: index, current, set) next to the DOE2 file
+Falls back to Messung.csv (semicolon-separated, first N values = IST/current, next N = SOLL/set) by searching parent directories upward
+Deviation calculation — for each matching index:
+nenner = 0.03 * |meas_current| + |meas_current - meas_set| + 0.02
+ProzAbweichung = 100 * (meas_current - sim_current - meas_set + sim_set) / nenner
+Sums |ProzAbweichung| and averages over the number of dimensions.
+Output files:
+*_result_*.txt per DOE2 file — per-index deviations + SUM
+result_all.txt at rm1_root — one line per result file with its sum
