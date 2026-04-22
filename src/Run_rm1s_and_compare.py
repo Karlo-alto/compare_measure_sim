@@ -326,6 +326,7 @@ def analyse_results(rm1_root: Path) -> None:
 
     collected = rm1_root / "result_all.txt"
     with collected.open("w", encoding="utf-8") as fh:
+        summ_all = 0.	
         fh.write("# result_file\tsum_ProzAbweichung\n")
         for result_path, total in summary:
             try:
@@ -333,7 +334,8 @@ def analyse_results(rm1_root: Path) -> None:
             except ValueError:
                 rel = result_path
             fh.write(f"{rel}\t{total:.8g}\n")
-
+            summ_all += total
+        fh.write(f"\n Summ: {summ_all:.8g}\n")
     print(f"\nCollected summary written to: {collected}")
 
 
